@@ -40,5 +40,5 @@ hyper = { version = "0.14", features = ["full"] }
 
 
 [dev-dependencies]
-testcontainers = "0.14.0"
+testcontainers = "0.15.0"
 axum-test = "14.2.2"
