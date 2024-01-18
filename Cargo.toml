@@ -12,7 +12,7 @@ dotenv = "0.15.0"
 dotenv_codegen = "0.15.0"
 
 # Uuid
-uuid = { version = "0.8.2", features = ["v4"] }
+uuid = { version = "1.6.1", features = ["v4"] }
 
 # Webserver dependency
 axum = { version = "0.7.3", features = ["multipart"] }
@@ -21,7 +21,7 @@ axum = { version = "0.7.3", features = ["multipart"] }
 tokio = { version = "1.32.0", features = ["full"] }
 
 # SQL Database
-sqlx = { version = "0.7.1", features = [
+sqlx = { version = "0.7.3", features = [
   "runtime-tokio",
   "migrate",
   "postgres",
@@ -29,16 +29,16 @@ sqlx = { version = "0.7.1", features = [
 
 # Serialization of data
 serde = { version = "1.0.183", features = ["derive"] }
-serde_json = "1.0.105"
+serde_json = "1.0.111"
 
 # Tracing
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 tower-http = { version = "0.5.0", features = ["trace", "fs"] }
 tower = { version = "0.4", features = ["full"] }
-hyper = { version = "0.14", features = ["full"] }
+hyper = { version = "1.1.0", features = ["full"] }
 
 
 [dev-dependencies]
-testcontainers = "0.14.0"
+testcontainers = "0.15.0"
 axum-test = "14.2.2"
