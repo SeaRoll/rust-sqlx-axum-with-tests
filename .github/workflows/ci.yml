@@ -26,10 +26,11 @@ jobs:
           echo "DATABASE_URL=postgres://postgres:mysecretpassword@localhost:5432/postgres" >> .env
           echo "PORT=3000" >> .env
 
-      - name: 🔨 Build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
+      # TODO: use this step to build the project (for deploying)
+      # - name: 🔨 Build
+      #   uses: actions-rs/cargo@v1
+      #   with:
+      #     command: build
 
       - name: 🔎 Test
         uses: actions-rs/cargo@v1
