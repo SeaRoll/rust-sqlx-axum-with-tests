@@ -21,15 +21,15 @@ jobs:
         with:
           toolchain: stable
 
-      - name: 🔨 Build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-
       - name: 🔧 Create env file
         run: |
           echo "DATABASE_URL=postgres://postgres:mysecretpassword@localhost:5432/postgres" >> .env
           echo "PORT=3000" >> .env
+
+      - name: 🔨 Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
 
       - name: 🔎 Test
         uses: actions-rs/cargo@v1
