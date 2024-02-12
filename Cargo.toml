@@ -18,7 +18,7 @@ uuid = { version = "1.6.1", features = ["v4"] }
 axum = { version = "0.7.4", features = ["multipart"] }
 
 # Async runtime
-tokio = { version = "1.32.0", features = ["full"] }
+tokio = { version = "1.36.0", features = ["full"] }
 
 # SQL Database
 sqlx = { version = "0.7.3", features = [
