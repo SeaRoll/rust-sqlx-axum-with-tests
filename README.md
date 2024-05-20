@@ -16,16 +16,8 @@ This is like a really small base on how to start a rust api.
 ## Running tests
 
 ```bash
-cargo test # Runs the tests
-```
-
-## Running API
-
-```bash
-docker build -f deployment/Dockerfile -t rust-api .
-docker compose -f deployment/docker-compose.yml up
-
-# to stop
+docker compose -f deployment/docker-compose.yml up -d
+cargo test
 docker compose -f deployment/docker-compose.yml down
 ```
 

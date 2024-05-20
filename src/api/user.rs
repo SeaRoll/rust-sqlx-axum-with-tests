@@ -6,7 +6,7 @@ use axum::Router;
 use axum::{extract::State, http::StatusCode, Json};
 
 use super::schema::{CreateUserSchema, EmptySuccessSchema, ErrorSchema};
-use super::state::AxumAppState;
+use super::state::AppState;
 use super::{mapper, schema};
 
 struct Handler;
@@ -47,7 +47,7 @@ pub struct API;
 
 impl API {
     pub async fn create_user(
-        State(state): State<AxumAppState>,
+        State(state): State<AppState>,
         Json(payload): Json<CreateUserSchema>,
     ) -> Result<(StatusCode, Json<EmptySuccessSchema>), (StatusCode, Json<ErrorSchema>)> {
         Handler::create_user(&state.db, &payload)
@@ -60,7 +60,7 @@ impl API {
     }
 
     pub async fn get_users(
-        State(state): State<AxumAppState>,
+        State(state): State<AppState>,
     ) -> Result<(StatusCode, Json<Vec<UserSchema>>), (StatusCode, Json<ErrorSchema>)> {
         let users = Handler::get_users(&state.db)
             .await
@@ -71,7 +71,7 @@ impl API {
         Ok((StatusCode::OK, Json::from(users)))
     }
 
-    pub fn routes(state: AxumAppState) -> Router {
+    pub fn routes(state: AppState) -> Router {
         let router = Router::new()
             .route("/", post(Self::create_user))
             .route("/", get(Self::get_users))

@@ -2,17 +2,16 @@ use std::sync::Arc;
 
 use crate::{config, database::db};
 
-pub struct AppState {
+pub struct State {
     pub db: db::DB,
 }
 
-pub type AxumAppState = Arc<AppState>;
+pub type AppState = Arc<State>;
 
-impl AppState {
-    pub async fn new(custom_db_uri: Option<String>) -> AxumAppState {
-        let uri = custom_db_uri.unwrap_or(config::DATABASE_URL.to_string());
-        Arc::new(AppState {
-            db: db::DB::new(&uri).await,
+impl State {
+    pub async fn new() -> AppState {
+        Arc::new(State {
+            db: db::DB::new(&config::DATABASE_URL).await,
         })
     }
 }

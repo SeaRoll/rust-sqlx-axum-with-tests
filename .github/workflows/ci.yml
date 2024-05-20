@@ -32,7 +32,15 @@ jobs:
       #   with:
       #     command: build
 
+      - name: 🔎 Setup docker compose
+        run: |
+          docker compose -f deployment/docker-compose.yml up -d
+          sleep 5
+
       - name: 🔎 Test
         uses: actions-rs/cargo@v1
         with:
           command: test
+
+      - name: 🔎 Tear down docker compose
+        run: docker compose -f deployment/docker-compose.yml down

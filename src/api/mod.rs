@@ -16,7 +16,7 @@ mod schema_test;
 pub struct API;
 
 impl API {
-    pub async fn init(state: state::AxumAppState) -> Router {
+    pub async fn init(state: state::AppState) -> Router {
         // setup tracing
         tracing_subscriber::fmt().compact().init();
 

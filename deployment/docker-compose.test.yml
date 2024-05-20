@@ -10,11 +10,3 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mysecretpassword
-
-  app:
-    image: rust-api:latest
-    restart: always
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db

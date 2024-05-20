@@ -3,13 +3,12 @@ use axum_test::TestServer;
 use serde_json::json;
 use testcontainers::clients;
 
-use crate::{api, docker};
+use crate::api;
 
 #[tokio::test]
 async fn get_users_empty() {
     let docker = clients::Cli::default();
-    let (_pg, uri) = docker::start_postgres_container(&docker);
-    let state = api::state::AppState::new(Option::Some(uri)).await;
+    let state = api::state::State::new().await;
     let app = api::API::init(state.clone()).await;
     let server = TestServer::new(app).unwrap();
     let response = server.get("/users").await;
